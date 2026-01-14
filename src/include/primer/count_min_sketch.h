@@ -12,6 +12,7 @@
 
 #pragma once
 
+#include <algorithm>
 #include <cstdint>
 #include <functional>
 #include <utility>
@@ -87,6 +88,8 @@ class CountMinSketch {
 
   /** @spring2026 PLEASE DO NOT MODIFY THE FOLLOWING */
   constexpr static size_t SEED_BASE = 15445;
+
+  std::unique_ptr<std::atomic<uint32_t>[]> count_matrix_;
 
   /**
    * @brief Seeded hash function generator
