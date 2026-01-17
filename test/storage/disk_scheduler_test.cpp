@@ -24,7 +24,7 @@ namespace bustub {
 using bustub::DiskManagerUnlimitedMemory;
 
 // NOLINTNEXTLINE
-TEST(DiskSchedulerTest, DISABLED_ScheduleWriteReadPageTest) {
+TEST(DiskSchedulerTest, ScheduleWriteReadPageTest) {
   char buf[BUSTUB_PAGE_SIZE] = {0};
   char data[BUSTUB_PAGE_SIZE] = {0};
 
@@ -52,7 +52,7 @@ TEST(DiskSchedulerTest, DISABLED_ScheduleWriteReadPageTest) {
   ASSERT_TRUE(future2.get());
   ASSERT_EQ(std::memcmp(buf, data, sizeof(buf)), 0);
 
-  disk_scheduler = nullptr;  // Call the DiskScheduler destructor to finish all scheduled jobs.
+  disk_scheduler = nullptr;  // unique_ptr will  call the DiskScheduler destructor to finish all scheduled jobs.
   dm->ShutDown();
 }
 
